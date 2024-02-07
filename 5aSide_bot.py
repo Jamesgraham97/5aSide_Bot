@@ -1,7 +1,6 @@
+import os
 import discord
 import random
-import schedule
-import time
 
 intents = discord.Intents.default()  # Create Intents object with default intents
 client = discord.Client(intents=intents)  # Pass Intents object when creating Client instance
@@ -9,6 +8,9 @@ all_players = {}  # Dictionary to store player data with MMR for all players
 game_pool = []    # List to store players available for the upcoming game
 team1 = []        # List to store players in Team 1
 team2 = []        # List to store players in Team 2
+
+# Read the bot token from the environment variable
+bot_token = os.getenv('BOT_TOKEN')
 
 # Handle all messages
 @client.event
@@ -99,4 +101,4 @@ def generate_teams():
 
     return team1, team2
 
-client.run('MTIwNDc1ODI0NDg3OTI0NTM0Mg.GtuCJM.GEdSngnRjvBhrMaIreUA3jACFNfdmmYaqvrJwk')
+client.run(bot_token)
